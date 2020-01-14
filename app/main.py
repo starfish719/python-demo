@@ -1,13 +1,13 @@
+import graphene
 from fastapi import FastAPI
+from starlette.graphql import GraphQLApp
+
+class Query(graphene.ObjectType):
+  hello = graphene.String(name=graphene.String(default_value="stranger"))
+
+  def resolve_hello(self, info, name):
+    return "Hello " + name
+
 
 app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+app.add_route("/graphiql", GraphQLApp(schema=graphene.Schema(query=Query)))

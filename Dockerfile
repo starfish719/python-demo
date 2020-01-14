@@ -17,6 +17,7 @@ RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install fastapi uvicorn
+RUN pip install "graphene>=2.0"
 
 EXPOSE 80
 
