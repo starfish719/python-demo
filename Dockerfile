@@ -4,6 +4,8 @@ USER root
 RUN mkdir /app
 COPY ./app /app
 
+SHELL ["/bin/bash", "-lc"]
+
 RUN apt-get update
 RUN apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
@@ -20,5 +22,3 @@ RUN pip install fastapi uvicorn
 RUN pip install "graphene>=2.0"
 
 EXPOSE 80
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
