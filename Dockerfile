@@ -2,7 +2,7 @@ FROM python:3.8.1
 USER root
 
 RUN mkdir /app
-COPY ./app /app
+WORKDIR /app
 
 SHELL ["/bin/bash", "-lc"]
 
