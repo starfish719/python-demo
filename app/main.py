@@ -2,7 +2,7 @@ import graphene
 from fastapi import FastAPI
 from starlette.graphql import GraphQLApp
 
-import app.graphql.query
+from app.graphql.query import Query
 
 app = FastAPI()
-app.add_route("/graphiql", GraphQLApp(schema=graphene.Schema(query=query.Query)))
+app.add_route("/graphiql", GraphQLApp(schema=graphene.Schema(query=Query)))

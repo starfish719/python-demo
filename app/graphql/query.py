@@ -1,13 +1,13 @@
 import graphene
 
-import app.graphql.schema.sample_schema
+from app.graphql.schema.sample_schema import Hoge, Fuga
 
 class Query(graphene.ObjectType):
-  hoge = graphene.Field(sample_schema.Hoge)
-  fuga = graphene.Field(sample_schema.Fuga)
+  hoge = graphene.Field(Hoge)
+  fuga = graphene.Field(Fuga)
 
   def resolve_hoge(root, info):
-    return sample_schema.Hoge(id = "abcdefg1234567", name = "hoge_name")
+    return Hoge(id = "abcdefg1234567", name = "hoge_name")
 
   def resolve_fuga(root, info):
-    return sample_schema.Fuga()
+    return Fuga()
